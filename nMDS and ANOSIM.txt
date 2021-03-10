@@ -3,24 +3,24 @@
 
 ## Sample grouping on nMDS
 
-library (vegan)
-Library (ggplot2)
+library (vegan);
+Library (ggplot2);
 
-g1 = c(1,1,1,1,1,2,2,2,2,3,3,3,3,3,3,1,1,1,1,2,2,2,2,1,1,1,1,2,2,2,2,3,3,3,3,3,3,1,1,1,2,2,2)## group syn to 3 climatic zones by latitudes
-g1[which(g1==3)] <- "Subarctic"
-g1[which(g1==1)] <- "Tropic"
-g1[which(g1==2)] <- "Subtropic"
-g2 = c(rep("Sur",23),rep("Dcm",20)) ## group syn by surface and DCM
-group = data.frame(cbind(g1,g2),row.names = rownames(syn))
+g1 = c(1,1,1,1,1,2,2,2,2,3,3,3,3,3,3,1,1,1,1,2,2,2,2,1,1,1,1,2,2,2,2,3,3,3,3,3,3,1,1,1,2,2,2);## group syn to 3 climatic zones by latitudes
+g1[which(g1==3)] <- "Subarctic";
+g1[which(g1==1)] <- "Tropic";
+g1[which(g1==2)] <- "Subtropic";
+g2 = c(rep("Sur",23),rep("Dcm",20)) ## group syn by surface and DCM;
+group = data.frame(cbind(g1,g2),row.names = rownames(syn));
 
-d = vegdist(sqrt(syn),"bray")
-nmds = monoMDS(d)
-NMDS = data.frame(MDS1 = nmds$points[,1], MDS2 = nmds$points[,2])
-NMDS = cbind(NMDS,group1)
+d = vegdist(sqrt(syn),"bray");
+nmds = monoMDS(d);
+NMDS = data.frame(MDS1 = nmds$points[,1], MDS2 = nmds$points[,2]);
+NMDS = cbind(NMDS,group1);
 
-P<-ggplot(data = NMDS, aes(MDS1,MDS2))+theme_bw()
+P<-ggplot(data = NMDS, aes(MDS1,MDS2))+theme_bw();
 
-P+geom_point(data=NMDS,aes(x=MDS1,y=MDS2,shape=group1,colour=group2),size=7)+theme(panel.grid=element_blank())
+P+geom_point(data=NMDS,aes(x=MDS1,y=MDS2,shape=group1,colour=group2),size=7)+theme(panel.grid=element_blank());
 
 
 
@@ -29,8 +29,8 @@ P+geom_point(data=NMDS,aes(x=MDS1,y=MDS2,shape=group1,colour=group2),size=7)+the
 
 # between climatic zones
 
-anosim(d,g1,permutations = 999)
+anosim(d,g1,permutations = 999);
 
 #between surface and DCM layers
 
-anosim(d,g2,permutations = 999)
+anosim(d,g2,permutations = 999);
