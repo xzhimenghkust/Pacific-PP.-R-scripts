@@ -1,0 +1,7 @@
+data_dim <- dim(data)
+result <- data
+for (i in seq(1,data_dim[2],1)){
+  min_value <- min(data[i])  
+  max_value <- max(data[i]) 
+  result[i] <- (data[i]-min_value)/(max_value-min_value)
+}
