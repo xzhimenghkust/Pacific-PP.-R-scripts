@@ -130,6 +130,7 @@ sncm.fit <- function(spp, pool=NULL, stats=TRUE, taxon=NULL){
 
 
 ### NCM fitness
+library(vegan);
 syn = rrarefy(syn, min(apply(syn,1,sum); ## subsampled to the same depth
 sncm.fit (syn); ## stats=TRUE, getting fitting statistics
 ## for plot
